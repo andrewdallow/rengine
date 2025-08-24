@@ -194,7 +194,7 @@ You can also find the deep dive video on how to use and install reNgine from her
 1. Clone the repository
 
     ```bash
-    git clone https://github.com/yogeshojha/rengine && cd rengine
+    git clone https://github.com/andrewdallow/rengine.git && cd rengine
     ```
 
 1. Configure the environment
