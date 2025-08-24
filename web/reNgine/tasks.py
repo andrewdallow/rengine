@@ -1683,7 +1683,7 @@ def dir_file_fuzz(self, ctx={}, description=None):
 	cmd += f' -mc {mc}' if mc else ''
 	formatted_headers = ' '.join(f'-H "{header}"' for header in custom_headers)
 	if formatted_headers:
-		cmd += formatted_headers
+		cmd += ' ' + formatted_headers
 
 	# Grab URLs to fuzz
 	urls = get_http_urls(
@@ -2483,7 +2483,7 @@ def nuclei_scan(self, urls=[], ctx={}, description=None):
 	cmd += f' -irr'
 	formatted_headers = ' '.join(f'-H "{header}"' for header in custom_headers)
 	if formatted_headers:
-		cmd += formatted_headers
+		cmd += ' ' + formatted_headers
 	cmd += f' -l {input_path}'
 	cmd += f' -c {str(concurrency)}' if concurrency > 0 else ''
 	cmd += f' -proxy {proxy} ' if proxy else ''
@@ -2579,7 +2579,7 @@ def dalfox_xss_scan(self, urls=[], ctx={}, description=None):
 	cmd += f' --timeout {timeout}' if timeout else ''
 	formatted_headers = ' '.join(f'-H "{header}"' for header in custom_headers)
 	if formatted_headers:
-		cmd += formatted_headers
+		cmd += ' ' + formatted_headers
 	cmd += f' --user-agent {user_agent}' if user_agent else ''
 	cmd += f' --worker {threads}' if threads else ''
 	cmd += f' --format json'
@@ -2705,7 +2705,7 @@ def crlfuzz_scan(self, urls=[], ctx={}, description=None):
 	cmd += f' -x {proxy}' if proxy else ''
 	formatted_headers = ' '.join(f'-H "{header}"' for header in custom_headers)
 	if formatted_headers:
-		cmd += formatted_headers
+		cmd += ' ' + formatted_headers
 	cmd += f' -o {output_path}'
 
 	run_command(
@@ -2906,7 +2906,7 @@ def http_crawl(
 	cmd += f' --http-proxy {proxy}' if proxy else ''
 	formatted_headers = ' '.join(f'-H "{header}"' for header in custom_headers)
 	if formatted_headers:
-		cmd += formatted_headers
+		cmd += ' ' + formatted_headers
 	cmd += f' -json'
 	cmd += f' -u {urls[0]}' if len(urls) == 1 else f' -l {input_path}'
 	cmd += f' -x {method}' if method else ''
