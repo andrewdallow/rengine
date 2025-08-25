@@ -10,6 +10,7 @@ import yaml
 import tldextract
 import concurrent.futures
 import base64
+import shlex
 
 from datetime import datetime
 from urllib.parse import urlparse
@@ -4128,7 +4129,7 @@ def stream_command(cmd, cwd=None, shell=False, history_file=None, encoding='utf-
 		activity_id=activity_id)
 
 	# Sanitize the cmd
-	command = cmd if shell else cmd.split()
+	command = cmd if shell else shlex.split(cmd)
 
 	# Run the command using subprocess
 	process = subprocess.Popen(
