@@ -1881,9 +1881,9 @@ def fetch_url(self, urls=[], ctx={}, description=None):
 	if custom_headers:
 		# gau, waybackurls does not support custom headers
 		formatted_headers = ' '.join(f'-H "{header}"' for header in custom_headers)
-		cmd_map['gospider'] += formatted_headers
-		cmd_map['hakrawler'] += ';;'.join(header for header in custom_headers)
-		cmd_map['katana'] += formatted_headers
+		cmd_map['gospider'] += ' ' + formatted_headers
+		cmd_map['hakrawler'] += ' -h "' + ';;'.join(header for header in custom_headers) + '"'
+		cmd_map['katana'] += ' ' + formatted_headers
 	cat_input = f'cat {input_path}'
 	grep_output = f'grep -Eo {host_regex}'
 	cmd_map = {
